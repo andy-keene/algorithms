@@ -32,7 +32,7 @@ int * initRandArr(int length, uniform_int_distribution<int> &size_dist, mt19937 
     }
 }
 
-// Converts clock object's tick-time to seconds
+// Converts tick-time to seconds
 float ticksToSec(int t)
 {
     return ((float)t)/CLOCKS_PER_SEC;
