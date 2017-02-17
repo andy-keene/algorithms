@@ -22,6 +22,24 @@ int main(){
     int aveSetSize = 1;
     int stepSize = 5;
 
+    arr = new int[7];
+    arr[0] = 0;
+    arr[1] = 0;
+    arr[2] = 10;
+    arr[3] = 6;
+    arr[4] = 7;
+    arr[5] = 7;
+    arr[6] = 7;
+
+    cout << "--Before sort: ";
+    printArr(arr, 7);
+
+    quickSort(arr, 0, 6);
+
+    cout << "--After sort: ";
+    printArr(arr, 7);
+
+/*
     ofstream dataFile;                                     //file
     dataFile.open("/Users/andykeene/Downloads/mergesortData.csv");                   
     
@@ -72,5 +90,37 @@ int main(){
     }
     
     dataFile.close();
+
+*/
     return 0;
 }
+
+
+/* LOL http://www.algolist.net/Algorithms/Sorting/Quicksort
+void aaquickSort(int arr[], int left, int right) {
+      int i = left, j = right;
+      int tmp;
+      int pivot = arr[(left + right) / 2];
+ 
+   
+      while (i <= j) {
+            while (arr[i] < pivot)
+                  i++;
+            while (arr[j] > pivot)
+                  j--;
+            if (i <= j) {
+                  tmp = arr[i];
+                  arr[i] = arr[j];
+                  arr[j] = tmp;
+                  i++;
+                  j--;
+            }
+      };
+ 
+  
+      if (left < j)
+            quickSort(arr, left, j);
+      if (i < right)
+            quickSort(arr, i, right);
+}
+*/
