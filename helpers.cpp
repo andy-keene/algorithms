@@ -4,7 +4,7 @@
 // prints array as "Length[n]: 1, 2, 3, ... n"
 void printArr(int * arr, int length)
 {
-    cout << "Length [" << length << "]: ";
+    //cout << "Length [" << length << "]: ";
 
     for (int i = 0; i < length; i++){
         cout << arr[i] << ", ";

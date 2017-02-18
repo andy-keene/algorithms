@@ -7,7 +7,8 @@
 void quickSort(int * arr, int b, int t)
 {
     if(b < t){
-        int p = hoarePartition(arr, b, t);
+        int p = lomutoPartition(arr, b, t);
+        //int p = hoarePartition(arr, b, t);
         quickSort(arr, b, p-1);
         quickSort(arr, p+1, t);
     }
@@ -53,11 +54,11 @@ int hoarePartition(int * arr, int b, int t)
 
         do{                                  //scan right for elements greater than pivot
             i++;                             //using t, top, for sentinal
-        } while( arr[i] < pivot && i < t);
+        } while (arr[i] < pivot && i < t);
         
         do {                                 //scan left for elements greater than pivot
             j--;
-        } while(arr[j] > pivot);
+        } while (arr[j] > pivot);
       
         if( i <= j){                         //swap elements if indices haven't crossed
             temp = arr[i];
