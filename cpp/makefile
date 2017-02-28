@@ -1,6 +1,6 @@
 CC = g++
 flags = -Wall -g -std=c++11
-exe = app
+exe = alg-time
 
 #Do I need to include the .h's for every .o file?
 

@@ -46,26 +46,32 @@ int * initSortArr(int length)
 }
 
 //returns an array which induces mergesorts worst-case
-//i.e. [2, 4, 6, 8, 1, 3, 5, 7]
-//     [2, 4, 6] [1, 3, 7] 
+//i.e. [8, 4, 6, 2, 7, 3, 5, 1] causes (n-1) compairsons
+// at each level
 int * initMergeWorst(int length)
 {
-    int * arr = new (nothrow) int[length];
-    if(!arr){
-        return NULL;
-    }
+    if (length == 1){
+        int * baseArr = new int[1];
+        baseArr[0] = 1;
+        return baseArr;
+    } else {
+        int parity = (length % 2 == 0) ? 0 : 1;
+        int half = length / 2;
+        int * bottom = initMergeWorst(half);
+        int * top = initMergeWorst(half + parity);
 
-    int half = length / 2;
-    int num = 1;
-    for (int i = 0; i < half; i++){
-        arr[i] = num * 2;               //evens sorted
-        arr[i+half] = (num * 2) - 1;    //odds sorted
-        num +=1;
+        int * arr = new int[length];
+        for(int i = 0; i < half; i ++){         //fill worst-case array of length n
+            arr[i] = bottom[i] * 2;             //evens on left
+            arr[i+half] = (top[i] * 2) - 1;     //odds on right
+        }
+        if (parity){                            //for our odd lengthed arrays!
+            arr[length-1] = top[half + parity - 1];
+        }
+        delete [] bottom;
+        delete [] top;
+        return arr;
     }
-    if(length % 2 != 0){        //if not even, last element was not filled
-        arr[length-1] = (num*2) - 1;
-    }
-    return arr;
 }
 
 // Converts tick-time to seconds

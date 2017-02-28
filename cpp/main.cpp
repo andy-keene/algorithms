@@ -17,7 +17,7 @@ int main(){
     int runTimeTotal = 0;
 
     int * arr = NULL;                                    //data collection parameters
-    int maxLen = 25;   
+    int maxLen = 1500000;   
     int startLen = 15;
     int aveSetSize = 3;
     int stepSize = 2000;
@@ -39,9 +39,8 @@ int main(){
         for (int set = 1; set <= aveSetSize; set++){              
             
             //arr = initSortArr(currLen);
-            arr = initRandArr(currLen, size_dist, generator);
-            printArr(arr, currLen);
-            //arr = initMergeWorst(currLen);     
+            //arr = initRandArr(currLen, size_dist, generator);
+            arr = initMergeWorst(currLen);     
             if(!arr){     
                 cout << "error: allocation failed for " 
                      << currLen << endl;             
