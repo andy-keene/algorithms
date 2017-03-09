@@ -1,11 +1,9 @@
 #include "helpers.h"
 
-
 // prints array as "Length[n]: 1, 2, 3, ... n"
 void printArr(int * arr, int length)
 {
-    //cout << "Length [" << length << "]: ";
-
+    cout << "Length [" << length << "]: ";
     for (int i = 0; i < length; i++){
         cout << arr[i] << ", ";
     }
@@ -22,12 +20,10 @@ int * initRandArr(int length, uniform_int_distribution<int> &size_dist, mt19937 
 
     if (!arr){                       //failed to generate list of length n
         return NULL;
-    } else {
-        
+    } else {  
         for(int i = 0; i < length; i++){
             arr[i] = size_dist(generator);
         }
-
         return arr;
     }
 }
@@ -59,8 +55,8 @@ int * initMergeWorst(int length)
         int half = length / 2;
         int * bottom = initMergeWorst(half);
         int * top = initMergeWorst(half + parity);
-
         int * arr = new int[length];
+
         for(int i = 0; i < half; i ++){         //fill worst-case array of length n
             arr[i] = bottom[i] * 2;             //evens on left
             arr[i+half] = (top[i] * 2) - 1;     //odds on right

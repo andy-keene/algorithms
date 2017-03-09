@@ -4,7 +4,7 @@
 #include <iostream>
 using namespace std;
 
-void quickSort(int *, int, int);                                              //Quicksort
+void quickSort(int *, int, int);
 int hoarePartition(int*, int, int);
 int lomutoPartition(int * arr, int, int);
 

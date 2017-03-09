@@ -19,11 +19,11 @@ int main(){
     int * arr = NULL;                                    //data collection parameters
     int maxLen = 1500000;   
     int startLen = 15;
-    int aveSetSize = 3;
+    int aveSetSize = 9;
     int stepSize = 2000;
 
     ofstream dataFile;                                     //file
-    dataFile.open("/Users/andykeene/Desktop/cs350-project/localdata/ms(1-2000000)_initMergeWorst.csv");                   
+    dataFile.open("~/data.csv");                   
     
     if (!dataFile.is_open()){
         cout << "Failed to open file\n";
@@ -37,7 +37,6 @@ int main(){
         cout << "running length: " << currLen << "...\n";                       //progress indicator
 
         for (int set = 1; set <= aveSetSize; set++){              
-            
             //arr = initSortArr(currLen);
             //arr = initRandArr(currLen, size_dist, generator);
             arr = initMergeWorst(currLen);     
@@ -50,13 +49,11 @@ int main(){
             mergeSortWrapper(arr, currLen);                                     //time merge sort
             //quickSort(arr, 0, currLen-1);                                     //time quick sort
             runTime = clock() - runTime;
-            
             if (!isSorted(arr, currLen)){
                 cout << "error: sort failed on length "
                      << currLen << endl;
                 exit(-1);
             }
-
             delete[] arr;
             runTimeTotal += runTime;
         }
